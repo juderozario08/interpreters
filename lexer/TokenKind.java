@@ -1,0 +1,8 @@
+package lexer;
+
+public enum TokenKind {
+    IF, ELSE, CONST, LET, FUNCTION,
+    PRINT, IDENTIFIER, NUMBER, STRING,
+    EQUALS, PLUS, MINUX, DIVISION, MULTIPLICATION,
+    SEMICOLON, EOF,
+};
