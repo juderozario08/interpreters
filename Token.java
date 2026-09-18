@@ -1,6 +1,5 @@
-package lexer;
-
 public class Token {
+
     public final TokenKind kind;
     public final String lexeme;
     public final int line;

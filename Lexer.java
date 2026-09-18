@@ -1,15 +1,16 @@
-package lexer;
-
-import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PushbackReader;
 
 public class Lexer {
-    private BufferedReader reader;
 
-    Lexer(BufferedReader reader) {
+    private final PushbackReader reader;
+
+    public Lexer(PushbackReader reader) {
+        this.reader = reader;
     }
 
-    public char nextToken() {
-        return '\0';
+    public Token nextToken() {
+        return new Token(TokenKind.CONST, "CONST", 1);
     }
 
     public char advance() {
@@ -40,11 +41,16 @@ public class Lexer {
         return "";
     }
 
-    public boolean isAtEnd() {
+    public boolean isAtEnd() throws IOException {
+        int ch = this.reader.read();
+        if (ch == -1) {
+            return true;
+        }
+        this.reader.unread(ch);
         return false;
     }
 
-    public BufferedReader getReader() {
+    public PushbackReader getReader() {
         return reader;
     }
 }
